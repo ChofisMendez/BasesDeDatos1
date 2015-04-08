@@ -5,7 +5,7 @@ import org.antlr.v4.runtime.tree.*;
 
 public class SQLVisitor {
 	
-	Errores errores = new Errores();
+	Error errores = new Error();
 	
 	private ANTLRInputStream input;
 	private GramaticaSQLLexer lexer;
