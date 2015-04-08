@@ -34,6 +34,7 @@ public class DDL {
 		return nameOfFiles;
 	}
 	
+	
 	public void alterDatabase(String oldName, String newName){
 		ArrayList<String> names = getNames();
 		File oldDir = new File("C:/Users/Sophia/Documents/DBMS/Bases de Datos/" + oldName);
@@ -46,10 +47,12 @@ public class DDL {
 		}  
 		else if(oldDir.isDirectory()){
 			oldDir.renameTo(newDir);
-			System.out.println("listo");
-			//AQUI ME QUEDEEEEEEEEEEEE*************++
+			System.out.println("listo, LLEGUE AQUI");
+			showDatabases();
 		}  
 	}
+	
+
 	
 	public void useDatabase(String nombre){
 		

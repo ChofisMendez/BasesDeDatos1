@@ -530,16 +530,6 @@ public interface GramaticaSQLListener extends ParseTreeListener {
 	 */
 	void exitStmtShowDB(@NotNull GramaticaSQLParser.StmtShowDBContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramaticaSQLParser#renameDatabase}.
-	 * @param ctx the parse tree
-	 */
-	void enterRenameDatabase(@NotNull GramaticaSQLParser.RenameDatabaseContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GramaticaSQLParser#renameDatabase}.
-	 * @param ctx the parse tree
-	 */
-	void exitRenameDatabase(@NotNull GramaticaSQLParser.RenameDatabaseContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link GramaticaSQLParser#or}.
 	 * @param ctx the parse tree
 	 */

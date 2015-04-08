@@ -319,12 +319,6 @@ public interface GramaticaSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStmtShowDB(@NotNull GramaticaSQLParser.StmtShowDBContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GramaticaSQLParser#renameDatabase}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitRenameDatabase(@NotNull GramaticaSQLParser.RenameDatabaseContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link GramaticaSQLParser#or}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

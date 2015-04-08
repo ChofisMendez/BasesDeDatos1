@@ -5,6 +5,8 @@ import org.antlr.v4.runtime.tree.*;
 
 public class SQLVisitor {
 	
+	Errores errores = new Errores();
+	
 	private ANTLRInputStream input;
 	private GramaticaSQLLexer lexer;
 	private CommonTokenStream tokens;
@@ -14,10 +16,14 @@ public class SQLVisitor {
         
         input = new ANTLRInputStream(entrada);
         lexer = new GramaticaSQLLexer(input);
+        lexer.removeErrorListeners();
+        lexer.addErrorListener(errores);
         tokens = new CommonTokenStream(lexer);
         parser = new GramaticaSQLParser(tokens);
+        parser.removeErrorListeners();
+        parser.addErrorListener(errores);
         LogicaSQL logica = new LogicaSQL();
-        logica.visit(parser.statementDatabase());
+        logica.visit(parser.principal());
         //ParseTree tree = parser.createDatabase();
         //System.out.println(tree.toStringTree(parser));
     }

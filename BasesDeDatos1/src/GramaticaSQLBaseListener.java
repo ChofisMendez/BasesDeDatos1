@@ -580,18 +580,6 @@ public class GramaticaSQLBaseListener implements GramaticaSQLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRenameDatabase(@NotNull GramaticaSQLParser.RenameDatabaseContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitRenameDatabase(@NotNull GramaticaSQLParser.RenameDatabaseContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterOr(@NotNull GramaticaSQLParser.OrContext ctx) { }
 	/**
 	 * {@inheritDoc}

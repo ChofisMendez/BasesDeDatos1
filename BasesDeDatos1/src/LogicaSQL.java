@@ -1,8 +1,9 @@
 
+
 public class LogicaSQL extends GramaticaSQLBaseVisitor<String>{
 	
 	public DDL ddl = new DDL();
-	String idRename = "";
+	public String idRename = "asd";
 
 	@Override
 	public String visitTipoIdFloat(GramaticaSQLParser.TipoIdFloatContext ctx) {
@@ -109,19 +110,14 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>{
 	}
 
 
-	@Override
-	public String visitAlterDatabase(GramaticaSQLParser.AlterDatabaseContext ctx) {
-		String antiguo = ctx.ID().getText();
-		ddl.alterDatabase(antiguo, idRename);
-		// TODO Auto-generated method stub
-		return super.visitAlterDatabase(ctx);
-	}
 
 	@Override
-	public String visitRenameDatabase(GramaticaSQLParser.RenameDatabaseContext ctx) {
-		idRename = ctx.ID().getText();
-		return null;
-		
+	public String visitAlterDatabase(GramaticaSQLParser.AlterDatabaseContext ctx) {
+		String idAntiguo = ctx.ID(0).getText();
+		String idNuevo = ctx.ID(1).getText();
+		ddl.alterDatabase(idAntiguo, idNuevo);
+		// TODO Auto-generated method stub
+		return super.visitAlterDatabase(ctx);
 	}
 
 	@Override
@@ -296,7 +292,6 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>{
 
 	@Override
 	public String visitStmtShowDB(GramaticaSQLParser.StmtShowDBContext ctx) {
-		ddl.showDatabases();
 		// TODO Auto-generated method stub
 		return super.visitStmtShowDB(ctx);
 	}

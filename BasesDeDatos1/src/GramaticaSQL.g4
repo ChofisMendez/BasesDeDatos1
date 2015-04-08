@@ -80,12 +80,9 @@ createDatabase
 ;
 
 alterDatabase
-:	ALTER DATABASE ID renameDatabase
+:	ALTER DATABASE ID RENAME TO ID
 ;
 
-renameDatabase
-:	RENAME TO ID
-;
 
 dropDatabase
 :	DROP DATABASE ID

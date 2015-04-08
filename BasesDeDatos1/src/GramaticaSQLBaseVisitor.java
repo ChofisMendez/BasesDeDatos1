@@ -346,13 +346,6 @@ public class GramaticaSQLBaseVisitor<T> extends AbstractParseTreeVisitor<T> impl
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitRenameDatabase(@NotNull GramaticaSQLParser.RenameDatabaseContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
 	@Override public T visitOr(@NotNull GramaticaSQLParser.OrContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
