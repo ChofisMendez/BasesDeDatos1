@@ -60,7 +60,7 @@ public class DDL {
 			newDirectory = null;
 		}
 		else {
-			newDirectory = ("C:/Users/Sophia/Documents/DBMS/Bases de Datos/" + nombre);
+			newDirectory = ("C:/Users/Sophia/Documents/DBMS/Bases de Datos/" + nombre + "/");
 		}
 		System.out.println(newDirectory);
 		return newDirectory;
