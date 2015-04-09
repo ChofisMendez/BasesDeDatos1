@@ -1,6 +1,7 @@
 
 
-public class LogicaSQL extends GramaticaSQLBaseVisitor<String>{
+public class LogicaSQL extends GramaticaSQLBaseVisitor<String>
+{
 	
 	public DDL ddl = new DDL();
 	public String idRename = "asd";
