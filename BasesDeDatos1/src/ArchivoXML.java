@@ -19,6 +19,7 @@ import org.w3c.dom.Text;
 public class ArchivoXML 
 {
 
+	
 	public String newline="\n";
 	
 	public static void main(String[] args) 
