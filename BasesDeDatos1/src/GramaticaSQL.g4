@@ -43,6 +43,7 @@ ASC : 'asc' | 'ASC' | 'Asc' ;
 DESC : 'desc' | 'DESC' | 'Desc';
 NUM : Digit(Digit)* ;
 ID : Letter (Letter | Digit)* ;
+VALOR: Letter (Letter)* ;
 LOGICAL : Relational ;  
 
 COMMENTS: '//' ~('\r' | '\n' )* -> channel(HIDDEN) ;
@@ -97,7 +98,15 @@ useDatabase
 ;
 
 createTable
-:	CREATE TABLE ID '(' (ID tipoId ',')* ID tipoId CONSTRAINT cKey 
+:	CREATE TABLE ID '(' (insertColumns constraint)?  ')' 
+;
+
+insertColumns
+:	ID tipoId (',' ID tipoId)*
+;
+
+constraint
+:	(CONSTRAINT cKey (',' CONSTRAINT cKey)*)?
 ;
 
 tipoId
@@ -108,11 +117,14 @@ tipoId
 ;
 
 cKey
-:	ID PRIMARY KEY '(' (ID ',')* ID ')'											#cKeyPK
-|	ID FOREIGN KEY '(' (ID ',')* ID ')' REFERENCES ID '(' (ID ',')* ID ')'		#cKeyFK
-|	ID CHECK '(' atom ')'														#cKeyCHK
+:	ID PRIMARY KEY '('  insertConstraint ')'												#cKeyPK
+|	ID FOREIGN KEY '('  insertConstraint ')' REFERENCES ID '('  insertConstraint ')'		#cKeyFK
+|	ID CHECK '(' atom ')'																	#cKeyCHK
 ;
  
+insertConstraint
+:	ID (',' ID)*
+;
 booleanExpression
 :	or
 ;
@@ -125,18 +137,34 @@ and
 :	not (AND not)*
 ;
 
+opeRelacional
+: '<' 		#RelMenor
+| '<=' 		#RelMenorIgual
+| '>' 		#RelMayor
+| '>=' 		#RelMayorIgual
+| '<>' 		#RelDiferentes
+| '='		#RelIgual
+;
+
+relacional
+:	ID opeRelacional  NUM
+|	ID opeRelacional '\'' VALOR '\''
+;
+
 not
 :	NOT atom		#notNotAtom
 |	atom			#notAtom
 ;
 
 atom
-:	ID								#atomID
-|	'(' booleanExpression ')'		#atomExp
+:	'(' booleanExpression ')'		
 ;
+
+
  
 statementTable
-:	alterTable			#stmtAlterTable
+:	createTable			#stmtCreateTable
+|	alterTable			#stmtAlterTable
 |	renameTable			#stmtRenameTable
 |	actionTable			#stmtActionTable
 |	showTables			#stmtShowTables
@@ -146,7 +174,7 @@ statementTable
 
 alterTable
 :	ALTER TABLE ID renameTable							#alterTableRename
-|	ALTER TABLE ID (actionTable ','* actionTable)		#alterTableAction
+|	ALTER TABLE ID actionTable (',' actionTable)*		#alterTableAction
 ;
 
 renameTable
@@ -154,7 +182,7 @@ renameTable
 ;
 
 actionTable
-:	addColumn tipoId (cKey ',')* cKey		#actTableAddCol
+:	addColumn tipoId cKey (',' cKey)*		#actTableAddCol
 |	addConstraint cKey						#actTableAddCnst
 |	dropColumn								#actTableDropCol
 |	dropConstraint							#actTableDropCnst
@@ -173,7 +201,7 @@ dropColumn
 ;
 
 dropConstraint
-:	DROP CONSTRAINT ID '_' ID
+:	DROP CONSTRAINT ID
 ;
 
 showTables
@@ -202,7 +230,11 @@ insert
 ;
 
 update
-:	UPDATE ID SET ID '=' tipoId (',' tipoId)* (WHERE condicion)? 
+:	UPDATE ID SET setting
+;
+
+setting
+:	ID '=' tipoId (',' ID '=' tipoId)* (WHERE condicion)? 
 ;
 
 delete

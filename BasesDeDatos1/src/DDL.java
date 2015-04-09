@@ -52,10 +52,18 @@ public class DDL {
 		}  
 	}
 	
-
-	
-	public void useDatabase(String nombre){
-		
+	public String useDatabase(String nombre){
+		ArrayList<String> names = getNames();
+		String newDirectory = "";
+		if(!names.contains(nombre)){ 
+			System.out.println("La Base de Datos no existe");
+			newDirectory = null;
+		}
+		else {
+			newDirectory = ("C:/Users/Sophia/Documents/DBMS/Bases de Datos/" + nombre);
+		}
+		System.out.println(newDirectory);
+		return newDirectory;
 	}
 	
 	public void dropDatabase(String nombre){

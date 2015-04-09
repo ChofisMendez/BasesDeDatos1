@@ -1,14 +1,16 @@
-
+//import java.util.ArrayList;
+import java.util.ArrayList;
+import java.util.List;
+import org.antlr.v4.runtime.tree.TerminalNode;
 
 public class LogicaSQL extends GramaticaSQLBaseVisitor<String>{
 	
-	public DDL ddl = new DDL();
-	public String idRename = "asd";
+	private DDL ddl = new DDL();
 
 	@Override
 	public String visitTipoIdFloat(GramaticaSQLParser.TipoIdFloatContext ctx) {
-		// TODO Auto-generated method stub
-		return super.visitTipoIdFloat(ctx);
+		String tipo = "float";
+		return tipo;
 	}
 
 	@Override
@@ -21,6 +23,14 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>{
 	public String visitAlterTableRename(GramaticaSQLParser.AlterTableRenameContext ctx) {
 		// TODO Auto-generated method stub
 		return super.visitAlterTableRename(ctx);
+	}
+
+	@Override
+	public String visitDropDatabase(GramaticaSQLParser.DropDatabaseContext ctx) {
+		String id = ctx.ID().getText();
+		ddl.dropDatabase(id);
+		// TODO Auto-generated method stub
+		return super.visitDropDatabase(ctx);
 	}
 
 	@Override
@@ -72,23 +82,15 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>{
 	}
 
 	@Override
-	public String visitDropDatabase(GramaticaSQLParser.DropDatabaseContext ctx) {
-		String id = ctx.ID().getText();
-		ddl.dropDatabase(id);
-		// TODO Auto-generated method stub
-		return super.visitDropDatabase(ctx);
-	}
-
-	@Override
-	public String visitStmtDropDB(GramaticaSQLParser.StmtDropDBContext ctx) {
-		// TODO Auto-generated method stub
-		return super.visitStmtDropDB(ctx);
-	}
-
-	@Override
 	public String visitStatementData(GramaticaSQLParser.StatementDataContext ctx) {
 		// TODO Auto-generated method stub
 		return super.visitStatementData(ctx);
+	}
+
+	@Override
+	public String visitSetting(GramaticaSQLParser.SettingContext ctx) {
+		// TODO Auto-generated method stub
+		return super.visitSetting(ctx);
 	}
 
 	@Override
@@ -108,8 +110,6 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>{
 		// TODO Auto-generated method stub
 		return super.visitNotAtom(ctx);
 	}
-
-
 
 	@Override
 	public String visitAlterDatabase(GramaticaSQLParser.AlterDatabaseContext ctx) {
@@ -133,7 +133,21 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>{
 	}
 
 	@Override
+	public String visitStmtDropDB(GramaticaSQLParser.StmtDropDBContext ctx) {
+		// TODO Auto-generated method stub
+		return super.visitStmtDropDB(ctx);
+	}
+
+	@Override
+	public String visitRelMayor(GramaticaSQLParser.RelMayorContext ctx) {
+		// TODO Auto-generated method stub
+		return super.visitRelMayor(ctx);
+	}
+
+	@Override
 	public String visitUseDatabase(GramaticaSQLParser.UseDatabaseContext ctx) {
+		String id = ctx.ID().getText();
+		ddl.useDatabase(id);
 		// TODO Auto-generated method stub
 		return super.visitUseDatabase(ctx);
 	}
@@ -169,12 +183,6 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>{
 	}
 
 	@Override
-	public String visitAtomID(GramaticaSQLParser.AtomIDContext ctx) {
-		// TODO Auto-generated method stub
-		return super.visitAtomID(ctx);
-	}
-
-	@Override
 	public String visitCreateDatabase(GramaticaSQLParser.CreateDatabaseContext ctx) {
 		String id = ctx.ID().getText();
 		ddl.createDatabase(id);
@@ -196,8 +204,8 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>{
 
 	@Override
 	public String visitTipoIdInt(GramaticaSQLParser.TipoIdIntContext ctx) {
-		// TODO Auto-generated method stub
-		return super.visitTipoIdInt(ctx);
+		String tipo = "int";
+		return tipo;
 	}
 
 	@Override
@@ -213,6 +221,12 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>{
 	}
 
 	@Override
+	public String visitRelMayorIgual(GramaticaSQLParser.RelMayorIgualContext ctx) {
+		// TODO Auto-generated method stub
+		return super.visitRelMayorIgual(ctx);
+	}
+
+	@Override
 	public String visitCKeyCHK(GramaticaSQLParser.CKeyCHKContext ctx) {
 		// TODO Auto-generated method stub
 		return super.visitCKeyCHK(ctx);
@@ -222,6 +236,12 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>{
 	public String visitCreateTable(GramaticaSQLParser.CreateTableContext ctx) {
 		// TODO Auto-generated method stub
 		return super.visitCreateTable(ctx);
+	}
+
+	@Override
+	public String visitRelacional(GramaticaSQLParser.RelacionalContext ctx) {
+		// TODO Auto-generated method stub
+		return super.visitRelacional(ctx);
 	}
 
 	@Override
@@ -255,9 +275,21 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>{
 	}
 
 	@Override
+	public String visitRelMenorIgual(GramaticaSQLParser.RelMenorIgualContext ctx) {
+		// TODO Auto-generated method stub
+		return super.visitRelMenorIgual(ctx);
+	}
+
+	@Override
 	public String visitShowColumnsFrom(GramaticaSQLParser.ShowColumnsFromContext ctx) {
 		// TODO Auto-generated method stub
 		return super.visitShowColumnsFrom(ctx);
+	}
+
+	@Override
+	public String visitInsertConstraint(GramaticaSQLParser.InsertConstraintContext ctx) {
+		// TODO Auto-generated method stub
+		return super.visitInsertConstraint(ctx);
 	}
 
 	@Override
@@ -280,8 +312,8 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>{
 
 	@Override
 	public String visitTipoIdDate(GramaticaSQLParser.TipoIdDateContext ctx) {
-		// TODO Auto-generated method stub
-		return super.visitTipoIdDate(ctx);
+		String tipo = "date";
+		return tipo;
 	}
 
 	@Override
@@ -292,6 +324,7 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>{
 
 	@Override
 	public String visitStmtShowDB(GramaticaSQLParser.StmtShowDBContext ctx) {
+		ddl.showDatabases();
 		// TODO Auto-generated method stub
 		return super.visitStmtShowDB(ctx);
 	}
@@ -304,7 +337,6 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>{
 
 	@Override
 	public String visitShowDatabases(GramaticaSQLParser.ShowDatabasesContext ctx) {
-		ddl.showDatabases();
 		// TODO Auto-generated method stub
 		return super.visitShowDatabases(ctx);
 	}
@@ -322,6 +354,12 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>{
 	}
 
 	@Override
+	public String visitRelMenor(GramaticaSQLParser.RelMenorContext ctx) {
+		// TODO Auto-generated method stub
+		return super.visitRelMenor(ctx);
+	}
+
+	@Override
 	public String visitCondicion(GramaticaSQLParser.CondicionContext ctx) {
 		// TODO Auto-generated method stub
 		return super.visitCondicion(ctx);
@@ -334,9 +372,9 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>{
 	}
 
 	@Override
-	public String visitAtomExp(GramaticaSQLParser.AtomExpContext ctx) {
+	public String visitRelDiferentes(GramaticaSQLParser.RelDiferentesContext ctx) {
 		// TODO Auto-generated method stub
-		return super.visitAtomExp(ctx);
+		return super.visitRelDiferentes(ctx);
 	}
 
 	@Override
@@ -344,11 +382,55 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>{
 		// TODO Auto-generated method stub
 		return super.visitStmtCreateDB(ctx);
 	}
+	
+	
+
+	@Override
+	public String visitStmtCreateTable(GramaticaSQLParser.StmtCreateTableContext ctx) {
+		// TODO Auto-generated method stub
+		return super.visitStmtCreateTable(ctx);
+	}
+
+	@Override
+	public String visitInsertColumns(GramaticaSQLParser.InsertColumnsContext ctx) {
+		List<TerminalNode> ids = ctx.ID();
+		ArrayList<String> nombreCol = new ArrayList<>();
+		ArrayList<String> tipoCol = new ArrayList<>();
+		for(int i = 0; i< ids.size(); i++){
+			String nombre = ids.get(i).getText();
+			String tipo = visit(ctx.tipoId(i));
+			nombreCol.add(nombre); //ESTE nombreCol ES EL QUE VA A RECIBIR COMO PARAMETRO EL METODO crearColumnas
+			tipoCol.add(tipo); //ESTE tipoCol ES EL QUE VA A RECIBIR COMO PARAMETRO EL METODO crearColumnas
+			System.out.println(nombre);
+			System.out.println(tipo);
+		}
+		// TODO Auto-generated method stub
+		return super.visitInsertColumns(ctx);
+	}
+
+	@Override
+	public String visitConstraint(GramaticaSQLParser.ConstraintContext ctx) {
+		// TODO Auto-generated method stub
+		return super.visitConstraint(ctx);
+	}
+
+	@Override
+	public String visitAtom(GramaticaSQLParser.AtomContext ctx) {
+		// TODO Auto-generated method stub
+		return super.visitAtom(ctx);
+	}
 
 	@Override
 	public String visitStmtUseDB(GramaticaSQLParser.StmtUseDBContext ctx) {
 		// TODO Auto-generated method stub
 		return super.visitStmtUseDB(ctx);
 	}
+
+	@Override
+	public String visitRelIgual(GramaticaSQLParser.RelIgualContext ctx) {
+		// TODO Auto-generated method stub
+		return super.visitRelIgual(ctx);
+	}
+	
 	
 }
