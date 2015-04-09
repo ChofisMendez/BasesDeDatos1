@@ -1,19 +1,23 @@
 
-public class Column {
-	
+public class Column 
+{
 	private String nombre;
 	private String tipo;
 	
-	public String getNombre() {
+	public String getNombre() 
+	{
 		return nombre;
 	}
-	public void setNombre(String nombre) {
+	public void setNombre(String nombre)
+	{
 		this.nombre = nombre;
 	}
-	public String getTipo() {
+	public String getTipo()
+	{
 		return tipo;
 	}
-	public void setTipo(String tipo) {
+	public void setTipo(String tipo) 
+	{
 		this.tipo = tipo;
 	}
 	

@@ -3,7 +3,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-public class LogicaSQL extends GramaticaSQLBaseVisitor<String>{
+public class LogicaSQL extends GramaticaSQLBaseVisitor<String>
+{
 	
 	private DDL ddl = new DDL();
 

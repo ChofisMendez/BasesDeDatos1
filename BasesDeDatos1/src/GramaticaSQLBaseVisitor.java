@@ -17,21 +17,21 @@ public class GramaticaSQLBaseVisitor<T> extends AbstractParseTreeVisitor<T> impl
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitTipoIdFloat(@NotNull GramaticaSQLParser.TipoIdFloatContext ctx) { return visitChildren(ctx); }
+	@Override public T visitTipoIdFloat(GramaticaSQLParser.TipoIdFloatContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitCKeyFK(@NotNull GramaticaSQLParser.CKeyFKContext ctx) { return visitChildren(ctx); }
+	@Override public T visitCKeyFK(GramaticaSQLParser.CKeyFKContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitAlterTableRename(@NotNull GramaticaSQLParser.AlterTableRenameContext ctx) { return visitChildren(ctx); }
+	@Override public T visitAlterTableRename( GramaticaSQLParser.AlterTableRenameContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
