@@ -10,6 +10,7 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>
 	
 	private DDL ddl = new DDL();
 	private static String dbActual = "";
+	private ArchivoXML XMLfile = new ArchivoXML();
 
 	@Override
 	public String visitTipoIdFloat(GramaticaSQLParser.TipoIdFloatContext ctx) {
@@ -252,6 +253,12 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>
 		ArrayList<Column> cols = ddl.crearColumnas(nombreCol, tipoCol);
 		Table nuevaTabla = ddl.crearTabla(dbActual, nombreTabla, cols); //FALTA AGREGAR LAS CONSTRAINTS
 		System.out.println(nuevaTabla.toString());
+		try {
+			XMLfile.generate(dbActual, nombreTabla, nombreCol, tipoCol);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		// TODO Auto-generated method stub
 		return super.visitCreateTable(ctx);
 	}

@@ -19,7 +19,7 @@ import org.w3c.dom.Text;
 public class ArchivoXML 
 {
 
-	public String newline="\n";
+	/*public String newline="\n";
 	
 	public static void main(String[] args) 
     {
@@ -46,9 +46,9 @@ public class ArchivoXML
         	generate(nombre_archivo, key, value);
         } 
         catch (Exception e) {}
-    }
+    }*/
  
-    public static void generate(String name, ArrayList<String> key, ArrayList<String> value) throws Exception
+    public void generate(String path, String name, ArrayList<String> key, ArrayList<String> value) throws Exception
     { 
  
         if(key.isEmpty() || value.isEmpty() || key.size()!=value.size())
@@ -70,13 +70,13 @@ public class ArchivoXML
             for(int i=0; i<key.size();i++)
             {
                 //Item Node
-                Element itemNode = document.createElement("ITEM"); 
+                Element itemNode = document.createElement("Columna"); 
                 //Key Node
-                Element keyNode = document.createElement("KEY"); 
+                Element keyNode = document.createElement("NombreColumna"); 
                 Text nodeKeyValue = document.createTextNode(key.get(i));
                 keyNode.appendChild(nodeKeyValue);      
                 //Value Node
-                Element valueNode = document.createElement("VALUE"); 
+                Element valueNode = document.createElement("TipoColumna"); 
                 Text nodeValueValue = document.createTextNode(value.get(i));                
                 valueNode.appendChild(nodeValueValue);
                 //append keyNode and valueNode to itemNode
@@ -92,7 +92,7 @@ public class ArchivoXML
             //Generate XML
             Source source = new DOMSource(document);
             //Indicamos donde lo queremos almacenar
-            Result result = new StreamResult(new java.io.File(name+".xml")); //nombre del archivo
+            Result result = new StreamResult(new java.io.File(path + name+".xml")); //nombre del archivo
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
             transformer.transform(source, result);
         }
