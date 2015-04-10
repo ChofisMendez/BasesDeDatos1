@@ -325,7 +325,6 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>
 
 	@Override
 	public String visitStmtShowDB(GramaticaSQLParser.StmtShowDBContext ctx) {
-		ddl.showDatabases();
 		// TODO Auto-generated method stub
 		return super.visitStmtShowDB(ctx);
 	}
@@ -338,6 +337,7 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>
 
 	@Override
 	public String visitShowDatabases(GramaticaSQLParser.ShowDatabasesContext ctx) {
+		ddl.showDatabases();
 		// TODO Auto-generated method stub
 		return super.visitShowDatabases(ctx);
 	}
@@ -402,8 +402,9 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>
 			String tipo = visit(ctx.tipoId(i));
 			nombreCol.add(nombre); //ESTE nombreCol ES EL QUE VA A RECIBIR COMO PARAMETRO EL METODO crearColumnas
 			tipoCol.add(tipo); //ESTE tipoCol ES EL QUE VA A RECIBIR COMO PARAMETRO EL METODO crearColumnas
-			System.out.println(nombre);
-			System.out.println(tipo);
+			//System.out.println(nombre);
+			//System.out.println(tipo);
+			ddl.crearColumnas(nombreCol, tipoCol);
 		}
 		// TODO Auto-generated method stub
 		return super.visitInsertColumns(ctx);

@@ -90,7 +90,7 @@ dropDatabase
 ;
 
 showDatabases
-:	SHOW DATABASES ID
+:	SHOW DATABASES
 ;
 
 useDatabase
