@@ -36,6 +36,21 @@ public class Table
 	{
 		this.constraints = constraints;
 	}
+
+	@Override
+	public String toString() {
+		String cols = "";
+		String tipos = "";
+		for(int i = 0; i < columnas.size(); i++){
+			cols = cols + columnas.get(i).getNombre() + ", ";
+			tipos = tipos + columnas.get(i).getTipo() + ", ";
+		}
+		return "Table [nombre= " + nombre + ", columnas= " + cols + tipos +"]";
+	}
+	
+	
+	
+	
 	
 
 }

@@ -92,17 +92,15 @@ public class DDL
 		return columnas;
 	}
 	
-	public ArrayList<Table> crearTabla(String path, String nombre, ArrayList<Column> columnas, ArrayList<Constraint> constraints)
+	public Table crearTabla(String path, String nombre, ArrayList<Column> columnas) //FALTA ArrayList<Constraint> constraints
 	{
-		ArrayList<Table> Tabla = new ArrayList<Table>();
-		File archivo = new File(path);
+		Table Tabla = new Table();
+		File archivo = new File(path +nombre);
 		if(!archivo.exists())
 		{
-			Table NuevaTabla =  new Table();
-			NuevaTabla.setNombre(nombre);
-			NuevaTabla.setColumnas(columnas);
-			NuevaTabla.setConstraints(constraints);
-			Tabla.add(NuevaTabla);
+			Tabla.setNombre(nombre);
+			Tabla.setColumnas(columnas);
+			//Tabla.setConstraints(constraints);
 		}
 		return Tabla;	
 	}

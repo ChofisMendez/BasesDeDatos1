@@ -182,7 +182,7 @@ renameTable
 ;
 
 actionTable
-:	addColumn tipoId cKey (',' cKey)*		#actTableAddCol
+:	addColumn tipoId constraint				#actTableAddCol
 |	addConstraint cKey						#actTableAddCnst
 |	dropColumn								#actTableDropCol
 |	dropConstraint							#actTableDropCnst

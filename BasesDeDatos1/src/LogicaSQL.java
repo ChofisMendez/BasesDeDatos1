@@ -1,12 +1,15 @@
-//import java.util.ArrayList;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.antlr.v4.runtime.tree.TerminalNode;
+
 
 public class LogicaSQL extends GramaticaSQLBaseVisitor<String>
 {
 	
 	private DDL ddl = new DDL();
+	private static String dbActual = "";
 
 	@Override
 	public String visitTipoIdFloat(GramaticaSQLParser.TipoIdFloatContext ctx) {
@@ -148,7 +151,7 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>
 	@Override
 	public String visitUseDatabase(GramaticaSQLParser.UseDatabaseContext ctx) {
 		String id = ctx.ID().getText();
-		ddl.useDatabase(id);
+		dbActual = ddl.useDatabase(id);
 		// TODO Auto-generated method stub
 		return super.visitUseDatabase(ctx);
 	}
@@ -235,6 +238,20 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>
 
 	@Override
 	public String visitCreateTable(GramaticaSQLParser.CreateTableContext ctx) {
+		//nombre de la Tabla
+		String nombreTabla = ctx.ID().getText();
+		List<TerminalNode> ids = ctx.insertColumns().ID();
+		ArrayList<String> nombreCol = new ArrayList<>();
+		ArrayList<String> tipoCol = new ArrayList<>();
+		for(int i = 0; i < ids.size(); i++){
+			String nombre = ids.get(i).getText();
+			String tipo = visit(ctx.insertColumns().tipoId(i));
+			nombreCol.add(nombre);
+			tipoCol.add(tipo);
+		}
+		ArrayList<Column> cols = ddl.crearColumnas(nombreCol, tipoCol);
+		Table nuevaTabla = ddl.crearTabla(dbActual, nombreTabla, cols); //FALTA AGREGAR LAS CONSTRAINTS
+		System.out.println(nuevaTabla.toString());
 		// TODO Auto-generated method stub
 		return super.visitCreateTable(ctx);
 	}
@@ -394,18 +411,6 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>
 
 	@Override
 	public String visitInsertColumns(GramaticaSQLParser.InsertColumnsContext ctx) {
-		List<TerminalNode> ids = ctx.ID();
-		ArrayList<String> nombreCol = new ArrayList<>();
-		ArrayList<String> tipoCol = new ArrayList<>();
-		for(int i = 0; i< ids.size(); i++){
-			String nombre = ids.get(i).getText();
-			String tipo = visit(ctx.tipoId(i));
-			nombreCol.add(nombre); //ESTE nombreCol ES EL QUE VA A RECIBIR COMO PARAMETRO EL METODO crearColumnas
-			tipoCol.add(tipo); //ESTE tipoCol ES EL QUE VA A RECIBIR COMO PARAMETRO EL METODO crearColumnas
-			//System.out.println(nombre);
-			//System.out.println(tipo);
-			ddl.crearColumnas(nombreCol, tipoCol);
-		}
 		// TODO Auto-generated method stub
 		return super.visitInsertColumns(ctx);
 	}
