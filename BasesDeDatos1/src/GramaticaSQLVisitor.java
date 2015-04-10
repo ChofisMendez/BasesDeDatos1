@@ -319,6 +319,13 @@ public interface GramaticaSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStmtActionTable(@NotNull GramaticaSQLParser.StmtActionTableContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code tipoIdText}
+	 * labeled alternative in {@link GramaticaSQLParser#tipoId}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTipoIdText(@NotNull GramaticaSQLParser.TipoIdTextContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link GramaticaSQLParser#and}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

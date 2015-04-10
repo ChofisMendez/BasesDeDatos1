@@ -5,6 +5,7 @@ import java.util.List;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 
+
 public class LogicaSQL extends GramaticaSQLBaseVisitor<String>
 {
 	
@@ -444,6 +445,12 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>
 	public String visitRelIgual(GramaticaSQLParser.RelIgualContext ctx) {
 		// TODO Auto-generated method stub
 		return super.visitRelIgual(ctx);
+	}
+
+	@Override
+	public String visitTipoIdText(GramaticaSQLParser.TipoIdTextContext ctx) {
+		// TODO Auto-generated method stub
+		return super.visitTipoIdText(ctx);
 	}
 	
 	

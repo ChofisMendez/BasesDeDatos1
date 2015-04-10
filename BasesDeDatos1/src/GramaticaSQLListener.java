@@ -530,6 +530,18 @@ public interface GramaticaSQLListener extends ParseTreeListener {
 	 */
 	void exitStmtActionTable(@NotNull GramaticaSQLParser.StmtActionTableContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code tipoIdText}
+	 * labeled alternative in {@link GramaticaSQLParser#tipoId}.
+	 * @param ctx the parse tree
+	 */
+	void enterTipoIdText(@NotNull GramaticaSQLParser.TipoIdTextContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code tipoIdText}
+	 * labeled alternative in {@link GramaticaSQLParser#tipoId}.
+	 * @param ctx the parse tree
+	 */
+	void exitTipoIdText(@NotNull GramaticaSQLParser.TipoIdTextContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link GramaticaSQLParser#and}.
 	 * @param ctx the parse tree
 	 */

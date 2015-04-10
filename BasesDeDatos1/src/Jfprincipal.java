@@ -1,17 +1,21 @@
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 
 
@@ -54,20 +58,34 @@ public class Jfprincipal extends JFrame
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		
+		JFrame frame = new JFrame();
 		JTextArea TAMostrarResultados = new JTextArea();
 		TAMostrarResultados.setBounds(10, 156, 364, 172);
 		TAMostrarResultados.setBackground(Color.black);
 		TAMostrarResultados.setForeground(Color.white);
+		Font font = new Font("Consolas", Font.BOLD, 12);
+		TAMostrarResultados.setFont(font);
+		TAMostrarResultados.setEditable(false);
+		
+		JScrollPane scrollTerminal = new JScrollPane(TAMostrarResultados);
+		scrollTerminal.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+		scrollTerminal.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		contentPane.add(TAMostrarResultados);
+		contentPane.add(scrollTerminal);
 		
 		JTextArea TARecibirQuerys = new JTextArea();
 		TARecibirQuerys.setBounds(10, 11, 364, 134);
+		JScrollPane scrollConsola = new JScrollPane(TARecibirQuerys);
+		scrollConsola.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+		scrollConsola.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		contentPane.add(TARecibirQuerys);
+		contentPane.add(scrollConsola);
 	
 		JButton btnInsertarArchivo = new JButton("Importar Archivo");
 		btnInsertarArchivo.setBounds(449, 71, 138, 35);
 		contentPane.add(btnInsertarArchivo);
+		frame.add(contentPane);
+		frame.setVisible(true);
 		btnInsertarArchivo.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent arg0) 

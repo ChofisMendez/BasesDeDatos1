@@ -580,6 +580,18 @@ public class GramaticaSQLBaseListener implements GramaticaSQLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterTipoIdText(@NotNull GramaticaSQLParser.TipoIdTextContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTipoIdText(@NotNull GramaticaSQLParser.TipoIdTextContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterAnd(@NotNull GramaticaSQLParser.AndContext ctx) { }
 	/**
 	 * {@inheritDoc}
