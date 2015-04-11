@@ -31,6 +31,7 @@ public class Jfprincipal extends JFrame
 			{
 				try 
 				{
+					//Solo este enter agregue.
 					Jfprincipal frame = new Jfprincipal();
 					frame.setVisible(true);
 				} 
@@ -48,6 +49,7 @@ public class Jfprincipal extends JFrame
 	public Jfprincipal()
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("Manejador de Bases de Datos");
 		setBounds(100, 100, 631, 367);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -82,7 +84,6 @@ public class Jfprincipal extends JFrame
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				//Aqui seteamos TODO lo que queremos ensenar en pantalla.
 				String mensaje=ejecutar(TARecibirQuerys);
 				TAMostrarResultados.setText(mensaje);
 			}
