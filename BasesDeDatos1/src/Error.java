@@ -9,8 +9,8 @@ import org.antlr.v4.runtime.dfa.DFA;
 
 
 
-public class Error implements ANTLRErrorListener {
-	
+public class Error implements ANTLRErrorListener 
+{	
 	boolean error = false;
 	String errorString = "";
 

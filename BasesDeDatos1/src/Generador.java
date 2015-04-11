@@ -3,8 +3,8 @@
 import org.antlr.v4.runtime.*;
 //import org.antlr.v4.runtime.tree.*;
 
-public class SQLVisitor {
-	
+public class Generador 
+{
 	Error errores = new Error();
 	
 	private ANTLRInputStream input;
@@ -12,8 +12,8 @@ public class SQLVisitor {
 	private CommonTokenStream tokens;
 	private GramaticaSQLParser parser;
 	
-    public void verificar(String entrada) {
-        
+    public String verificar(String entrada) 
+    {  
         input = new ANTLRInputStream(entrada);
         lexer = new GramaticaSQLLexer(input);
         lexer.removeErrorListeners();
@@ -23,8 +23,8 @@ public class SQLVisitor {
         parser.removeErrorListeners();
         parser.addErrorListener(errores);
         LogicaSQL logica = new LogicaSQL();
-        logica.visit(parser.principal());
-        //ParseTree tree = parser.createDatabase();
-        //System.out.println(tree.toStringTree(parser));
+        String mensaje=logica.visit(parser.principal());
+        return mensaje;
+        
     }
 }

@@ -18,36 +18,6 @@ import org.w3c.dom.Text;
  
 public class ArchivoXML 
 {
-
-	/*public String newline="\n";
-	
-	public static void main(String[] args) 
-    {
-        String nombre_archivo = "PruebaXML";
-        
-		ArrayList<String> key = new ArrayList<String>();
-        
-		ArrayList<String> value = new ArrayList<String>();
- 
-        key.add("opcion1");
-        value.add("22");
- 
-        key.add("opcion2");
-        value.add("22");
- 
-        key.add("opcion3");
-        value.add("22");
- 
-        key.add("opcion4");
-        value.add("25");
- 
-        try 
-        { 
-        	generate(nombre_archivo, key, value);
-        } 
-        catch (Exception e) {}
-    }*/
- 
     public void generate(String path, String name, ArrayList<String> key, ArrayList<String> value) throws Exception
     { 
  
@@ -81,10 +51,7 @@ public class ArchivoXML
                 valueNode.appendChild(nodeValueValue);
                 //append keyNode and valueNode to itemNode
                 itemNode.appendChild(keyNode);
-                itemNode.appendChild(valueNode);
-                System.out.println("\n");
-                System.out.println("Guardo " + Integer.toString(i));
-               
+                itemNode.appendChild(valueNode);               
                 //append itemNode to raiz
                 raiz.appendChild(itemNode); //pegamos el elemento a la raiz "Documento"
                 

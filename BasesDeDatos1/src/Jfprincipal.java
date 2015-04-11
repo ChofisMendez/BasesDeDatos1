@@ -82,10 +82,9 @@ public class Jfprincipal extends JFrame
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				TAMostrarResultados.setText("");
-				ejecutar(TARecibirQuerys);
-				
-				
+				//Aqui seteamos TODO lo que queremos ensenar en pantalla.
+				String mensaje=ejecutar(TARecibirQuerys);
+				TAMostrarResultados.setText(mensaje);
 			}
 		});
 		btnEjecutar.setBounds(449, 143, 138, 35);
@@ -93,11 +92,12 @@ public class Jfprincipal extends JFrame
 
 	}
 	
-	public void ejecutar(JTextArea area)
+	public String ejecutar(JTextArea area)
 	{
 		String entrada = RetornarTextoArea(area);
-		SQLVisitor lalala = new SQLVisitor();
-		lalala.verificar(entrada);
+		Generador lalala = new Generador();
+		String mensaje=lalala.verificar(entrada);
+		return mensaje;
 	}
 	
 	//Toma el texto que inresa en las Querys.
